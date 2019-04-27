@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN apt-get update -y && apt-get install -y curl perl python psmisc
+RUN apt-get update && apt-get upgrade -y && apt-get install -y curl perl python psmisc
 
 RUN mkdir /umds-store67
 RUN mkdir /umds-staging
