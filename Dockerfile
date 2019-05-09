@@ -4,6 +4,7 @@ RUN yum upgrade -y && yum install which curl perl psmisc epel-release yum-utils 
 RUN yum install -y nginx
 RUN mkdir /umds-store67
 RUN mkdir /umds-staging
+RUN mkdir -p /etc/nginx/ng-certs
 WORKDIR /umds-store67
 COPY vmware-umds-distrib/ /umds-staging
 COPY umds-docker.sh /umds-staging
