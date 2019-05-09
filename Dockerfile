@@ -17,7 +17,7 @@ ADD default /etc/nginx/sites-available/default
 
 VOLUME /usr/local/vmware-umds
 VOLUME /umds-store67
-
+VOLUME /etc/nginx
 
 EXPOSE 80
 
