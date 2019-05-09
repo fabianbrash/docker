@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 MAINTAINER Fabian Brash
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y curl perl psmisc nginx \
-&& apt-get clean && echo "daemon off;" >> /etc/nginx/nginx.conf
+&& apt-get clean
 
 RUN mkdir /umds-store67
 RUN mkdir /umds-staging
@@ -14,6 +14,7 @@ RUN chmod +x /umds-staging/umds-docker-ubuntu.sh
 RUN /umds-staging/umds-docker-ubuntu.sh
 
 ADD default /etc/nginx/sites-available/default
+ADD nginx.conf /etc/nginx/nginx.conf
 
 VOLUME /usr/local/vmware-umds
 VOLUME /umds-store67
@@ -21,5 +22,6 @@ VOLUME /etc/nginx
 
 EXPOSE 80
 
-CMD ["nginx"]
+STOPSIGNAL SIGTERM
 
+CMD ["nginx", "-g", "daemon off;"]
