@@ -7,6 +7,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y curl perl psmisc 
 
 RUN mkdir /umds-store67
 RUN mkdir /umds-staging
+RUN mkdir -p /etc/nginx/ng-certs
 WORKDIR /umds-store67
 COPY vmware-umds-distrib/ /umds-staging
 COPY umds-docker-ubuntu.sh /umds-staging
