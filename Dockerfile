@@ -1,21 +1,7 @@
-FROM ubuntu:18.04
+FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y curl perl python psmisc
+RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 
-RUN mkdir /umds-store67
-RUN mkdir /umds-staging
-WORKDIR /umds-store67
-COPY vmware-umds-distrib/ /umds-staging
-COPY umds-docker-ubuntu.sh /umds-staging
-RUN chmod +x /umds-staging/umds-docker-ubuntu.sh
-RUN /umds-staging/umds-docker-ubuntu.sh
+WORKDIR /inetpub/wwwroot
 
-VOLUME /usr/local/vmware-umds
-VOLUME /umds-store67
-
- 
-EXPOSE 8080
-
-CMD ["python", "-m", "SimpleHTTPServer", "8080"]
-
-
+COPY content/ .
