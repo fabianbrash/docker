@@ -5,3 +5,5 @@ RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 WORKDIR /inetpub/wwwroot
 
 COPY content/ .
+
+#https://github.com/Microsoft/iis-docker/blob/master/windowsservercore-ltsc2019/Dockerfile
